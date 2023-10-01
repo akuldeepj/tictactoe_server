@@ -10,11 +10,13 @@ const port = process.env.PORT || 3000;
 var server = http.createServer(app);
 
 var io = require('socket.io')(server);
-
+//initializing socket io
 
 app.use(express.json());
 
 const DB = "mongodb+srv://akuldeepj:akul2005@cluster0.hy0f7kz.mongodb.net/?retryWrites=true&w=majority"
+// DB connection
+
 io.on("connection", (socket) => {
     console.log("connected!");
     socket.on("createRoom", async ({ nickname }) => {
