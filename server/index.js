@@ -4,6 +4,8 @@ const http = require('http');
 const mongoose = require('mongoose');
 const Room = require('./models/room');
 console.log("hello");
+//hide the url in .env file
+require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 3000; 
@@ -14,7 +16,7 @@ var io = require('socket.io')(server);
 
 app.use(express.json());
 
-const DB = "mongodb+srv://akuldeepj:akul2005@cluster0.hy0f7kz.mongodb.net/?retryWrites=true&w=majority"
+const DB = process.env.URL;
 // DB connection
 
 io.on("connection", (socket) => {
@@ -134,10 +136,9 @@ mongoose.connect(DB).then(() => {
     console.log(e)
 });
 
-server.listen(port, "0.0.0.0", () => {
+server.listen(port,() => {
     console.log(`Server is up on port ${port}`);
 }); 
-
 
 
 //test commit again
