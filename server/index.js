@@ -12,7 +12,6 @@ const port = process.env.PORT || 3000;
 var server = http.createServer(app);
 
 var io = require('socket.io')(server);
-//initializing socket io
 
 app.use(express.json());
 
